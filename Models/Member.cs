@@ -1,6 +1,6 @@
 ﻿namespace FlexFit.Models
 {
-    public class Member
+    public class Member 
     {
             public int Id { get; set; }
 

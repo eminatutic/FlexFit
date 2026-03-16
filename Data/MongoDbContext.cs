@@ -1,5 +1,5 @@
 ﻿using MongoDB.Driver;
-using FlexFit.MongoModels;
+using FlexFit.MongoModels.Models;
 
 namespace FlexFit.Data
 {
@@ -15,5 +15,11 @@ namespace FlexFit.Data
 
         public IMongoCollection<EntryLog> EntryLogs =>
             _database.GetCollection<EntryLog>("entry_logs");
+
+        public IMongoCollection<Incident> Incidents =>
+            _database.GetCollection<Incident>("incidents");
+
+        public IMongoCollection<RateLimitViolation> RateLimitViolations =>
+            _database.GetCollection<RateLimitViolation>("rate_limit_violations");
     }
 }
