@@ -1,11 +1,12 @@
+using BCrypt.Net;
 using FlexFit.Application.Queries;
 using FlexFit.Data;
+using FlexFit.Models;
 using FlexFit.MongoModels.Models;
 using FlexFit.MongoModels.Repositories;
 using FlexFit.Token;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using BCrypt.Net;
 
 namespace FlexFit.Application.Handlers
 {
@@ -21,27 +22,47 @@ namespace FlexFit.Application.Handlers
             _tokenService = tokenService;
             _loginRepository = loginRepository;
         }
-
         public async Task<string> Handle(LoginQuery request, CancellationToken cancellationToken)
         {
-            // 1?? Provera korisnika u SQL bazi
             var user = await _context.Users
                 .FirstOrDefaultAsync(u => u.Email == request.LoginDto.Email, cancellationToken);
 
-            if (user == null || !BCrypt.Net.BCrypt.Verify(request.LoginDto.Password, user.Password))
+            if (user == null)
             {
-                return null; // Nevalidni kredencijali
+                // opcionalno: ako je Google login, kreiraj novi nalog
+                if (request.LoginDto.IsGoogle)
+                {
+                    user = new Member
+                    {
+                        Email = request.LoginDto.Email,
+                        Password = null,
+                        Role = Role.Member
+                    };
+                    _context.Users.Add(user);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    return null; // email ne postoji i nije Google login
+                }
             }
 
-            // 2?? Kreiranje tokena
+            // Provera password-a za obi?an login
+            if (!request.LoginDto.IsGoogle)
+            {
+                if (user.Password == null || !BCrypt.Net.BCrypt.Verify(request.LoginDto.Password, user.Password))
+                    return null; // invalid credentials
+            }
+
+            // Kreiranje tokena
             var token = _tokenService.CreateToken(user);
 
-            // 3?? Logovanje u MongoDB kolekciju Login
+            // Logovanje u MongoDB
             var log = new Login
             {
-                UserId = user.Id.ToString(),     // ili samo user.Id ako je string
+                UserId = user.Id.ToString(),
                 Email = user.Email,
-                Role = user.Role.ToString(),     // "Member" ili "Employee"
+                Role = user.Role.ToString(),
                 Time = DateTime.UtcNow
             };
 
@@ -49,5 +70,39 @@ namespace FlexFit.Application.Handlers
 
             return token;
         }
+
     }
 }
+
+
+
+
+
+
+//public async Task<string> Handle(LoginQuery request, CancellationToken cancellationToken)
+//{
+//    // 1?? Provera korisnika u SQL bazi
+//    var user = await _context.Users
+//        .FirstOrDefaultAsync(u => u.Email == request.LoginDto.Email, cancellationToken);
+
+//    if (user == null || !BCrypt.Net.BCrypt.Verify(request.LoginDto.Password, user.Password))
+//    {
+//        return null; // Nevalidni kredencijali
+//    }
+
+//    // 2?? Kreiranje tokena
+//    var token = _tokenService.CreateToken(user);
+
+//    // 3?? Logovanje u MongoDB kolekciju Login
+//    var log = new Login
+//    {
+//        UserId = user.Id.ToString(),     // ili samo user.Id ako je string
+//        Email = user.Email,
+//        Role = user.Role.ToString(),     // "Member" ili "Employee"
+//        Time = DateTime.UtcNow
+//    };
+
+//    await _loginRepository.AddAsync(log);
+
+//    return token;
+//}
