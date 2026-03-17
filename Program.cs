@@ -112,6 +112,7 @@ namespace FlexFit
 
             builder.Services.AddSingleton<MongoDbContext>();
             builder.Services.AddScoped<EntryLogRepository>();
+            builder.Services.AddScoped<LoginRepository>();
             builder.Services.AddScoped<IncidentRepository>();
             builder.Services.AddScoped<RateLimitViolationRepository>();
 

@@ -21,5 +21,8 @@ namespace FlexFit.Data
 
         public IMongoCollection<RateLimitViolation> RateLimitViolations =>
             _database.GetCollection<RateLimitViolation>("rate_limit_violations");
+
+        public IMongoCollection<Login> Login =>
+            _database.GetCollection<Login>("logins");
     }
 }

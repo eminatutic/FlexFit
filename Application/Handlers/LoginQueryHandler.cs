@@ -13,45 +13,39 @@ namespace FlexFit.Application.Handlers
     {
         private readonly AppDbContext _context;
         private readonly ITokenService _tokenService;
-        private readonly EntryLogRepository _entryLogRepository;
+        private readonly LoginRepository _loginRepository;
 
-        public LoginQueryHandler(AppDbContext context, ITokenService tokenService, EntryLogRepository entryLogRepository)
+        public LoginQueryHandler(AppDbContext context, ITokenService tokenService, LoginRepository loginRepository)
         {
             _context = context;
             _tokenService = tokenService;
-            _entryLogRepository = entryLogRepository;
+            _loginRepository = loginRepository;
         }
 
         public async Task<string> Handle(LoginQuery request, CancellationToken cancellationToken)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.LoginDto.Email, cancellationToken);
+            // 1?? Provera korisnika u SQL bazi
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.Email == request.LoginDto.Email, cancellationToken);
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(request.LoginDto.Password, user.Password))
             {
-                return null; // Invalid credentials
+                return null; // Nevalidni kredencijali
             }
 
-            // Create Token
+            // 2?? Kreiranje tokena
             var token = _tokenService.CreateToken(user);
 
-            // Log login to MongoDB
-            var log = new EntryLog
+            // 3?? Logovanje u MongoDB kolekciju Login
+            var log = new Login
             {
-                Time = DateTime.UtcNow,
-                CardStatus = "N/A", // Default for login event
-                Incident = false
+                UserId = user.Id.ToString(),     // ili samo user.Id ako je string
+                Email = user.Email,
+                Role = user.Role.ToString(),     // "Member" ili "Employee"
+                Time = DateTime.UtcNow
             };
 
-            if (user.Role == FlexFit.Models.Role.Member)
-            {
-                log.MemberId = user.Id;
-            }
-            else if (user.Role == FlexFit.Models.Role.Employee)
-            {
-                log.EmployeeId = user.Id;
-            }
-
-            await _entryLogRepository.AddAsync(log);
+            await _loginRepository.AddAsync(log);
 
             return token;
         }

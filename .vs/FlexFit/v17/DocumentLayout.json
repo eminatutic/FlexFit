@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flex\\flexfit\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flex\\flexfit\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flex\\flexfit\\models\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:models\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flex\\flexfit\\models\\subscriptioncard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:models\\subscriptioncard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flex\\flexfit\\models\\membershipcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:models\\membershipcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flex\\flexfit\\application\\handlers\\loginqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:application\\handlers\\loginqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -51,51 +43,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "Data\\AppDbContext.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAswCAAAAALAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAlwHIAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T14:01:22.73Z",
+              "WhenOpened": "2026-03-17T14:17:43.878Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MembershipCard.cs",
-              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\Models\\MembershipCard.cs",
-              "RelativeDocumentMoniker": "Models\\MembershipCard.cs",
-              "ToolTip": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\Models\\MembershipCard.cs",
-              "RelativeToolTip": "Models\\MembershipCard.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T13:51:58.55Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Member.cs",
-              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\Models\\Member.cs",
-              "RelativeDocumentMoniker": "Models\\Member.cs",
-              "ToolTip": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\Models\\Member.cs",
-              "RelativeToolTip": "Models\\Member.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Title": "LoginQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\Application\\Handlers\\LoginQueryHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Handlers\\LoginQueryHandler.cs",
+              "ToolTip": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\Application\\Handlers\\LoginQueryHandler.cs",
+              "RelativeToolTip": "Application\\Handlers\\LoginQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T13:51:49.051Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SubscriptionCard.cs",
-              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\Models\\SubscriptionCard.cs",
-              "RelativeDocumentMoniker": "Models\\SubscriptionCard.cs",
-              "ToolTip": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\Models\\SubscriptionCard.cs",
-              "RelativeToolTip": "Models\\SubscriptionCard.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T13:43:32.353Z"
+              "WhenOpened": "2026-03-17T14:16:32.319Z",
+              "EditorCaption": ""
             }
           ]
         }
