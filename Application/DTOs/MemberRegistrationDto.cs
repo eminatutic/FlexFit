@@ -9,5 +9,6 @@ namespace FlexFit.Application.DTOs
         public string Password { get; set; }
         public string JMBG { get; set; }
         public string CardNumber { get; set; } // OVO JE KARTICA KOJU JE KUPITI/DOBITI PRED ULAZAK
+        public bool PersonalTrainer { get; set; }
     }
 }

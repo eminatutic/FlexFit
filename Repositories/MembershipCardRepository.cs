@@ -14,16 +14,14 @@ namespace FlexFit.Repositories
             _context = context;
         }
         public async Task<MembershipCard> GetByCardNumberAsync(string cardNumber) =>
-    await _context.MembershipCards
-        .Include(c => c.Member)
-        .FirstOrDefaultAsync(c => c.CardNumber == cardNumber);
+            await _context.MembershipCards
+                .FirstOrDefaultAsync(c => c.CardNumber == cardNumber);
         public async Task<MembershipCard> GetByIdAsync(int id) =>
             await _context.MembershipCards
-                .Include(c => c.Member)
                 .FirstOrDefaultAsync(c => c.Id == id);
 
         public async Task<IEnumerable<MembershipCard>> GetAllAsync() =>
-            await _context.MembershipCards.Include(c => c.Member).ToListAsync();
+            await _context.MembershipCards.ToListAsync();
 
         public async Task AddAsync(MembershipCard card)
         {

@@ -142,5 +142,89 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlexFit.Controllers.FitnessObjectsController",
+    "Method": "GetAll",
+    "RelativePath": "api/FitnessObjects",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlexFit.Controllers.FitnessObjectsController",
+    "Method": "GetById",
+    "RelativePath": "api/FitnessObjects/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlexFit.Controllers.GuardController",
+    "Method": "SellDailyTicket",
+    "RelativePath": "api/Guard/sell-daily-ticket",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FlexFit.Application.DTOs.SellDailyTicketDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlexFit.Controllers.MembersController",
+    "Method": "GetAll",
+    "RelativePath": "api/Members",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlexFit.Controllers.MembershipCardsController",
+    "Method": "GetAll",
+    "RelativePath": "api/MembershipCards",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "type",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlexFit.Controllers.MembershipCardsController",
+    "Method": "GetById",
+    "RelativePath": "api/MembershipCards/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

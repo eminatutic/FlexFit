@@ -1,0 +1,40 @@
+using FlexFit.Application.Commands;
+using FlexFit.Models;
+using FlexFit.UnitOfWorkLayer;
+using MediatR;
+
+namespace FlexFit.Application.Handlers
+{
+    public class SellDailyTicketCommandHandler : IRequestHandler<SellDailyTicketCommand, bool>
+    {
+        private readonly IUnitOfWork _uow;
+
+        public SellDailyTicketCommandHandler(IUnitOfWork uow)
+        {
+            _uow = uow;
+        }
+
+        public async Task<bool> Handle(SellDailyTicketCommand request, CancellationToken cancellationToken)
+        {
+            var card = await _uow.MembershipCards.GetByCardNumberAsync(request.Dto.CardNumber);
+
+            if (card == null || !(card is DailyCard dailyCard))
+            {
+                return false;
+            }
+
+            if (dailyCard.IsActive)
+            {
+                return false; // Already active/sold
+            }
+
+            dailyCard.PurchaseDate = DateTime.UtcNow;
+            dailyCard.IsActive = true;
+
+            await _uow.MembershipCards.UpdateAsync(dailyCard);
+            await _uow.SaveAsync();
+
+            return true;
+        }
+    }
+}

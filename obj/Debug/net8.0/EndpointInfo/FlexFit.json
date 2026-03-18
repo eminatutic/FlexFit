@@ -266,6 +266,128 @@
           }
         }
       }
+    },
+    "/api/FitnessObjects": {
+      "get": {
+        "tags": [
+          "FitnessObjects"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FitnessObjects/{id}": {
+      "get": {
+        "tags": [
+          "FitnessObjects"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Guard/sell-daily-ticket": {
+      "post": {
+        "tags": [
+          "Guard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SellDailyTicketDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SellDailyTicketDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SellDailyTicketDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Members": {
+      "get": {
+        "tags": [
+          "Members"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MembershipCards": {
+      "get": {
+        "tags": [
+          "MembershipCards"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MembershipCards/{id}": {
+      "get": {
+        "tags": [
+          "MembershipCards"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -274,10 +396,6 @@
         "type": "object",
         "properties": {
           "cardNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "serialNumber": {
             "type": "string",
             "nullable": true
           },
@@ -324,9 +442,6 @@
           "cardNumber": {
             "type": "string",
             "nullable": true
-          },
-          "personalTrainer": {
-            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -382,6 +497,9 @@
           "password": {
             "type": "string",
             "nullable": true
+          },
+          "isGoogle": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -413,6 +531,19 @@
             "type": "string",
             "nullable": true
           },
+          "cardNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "personalTrainer": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SellDailyTicketDto": {
+        "type": "object",
+        "properties": {
           "cardNumber": {
             "type": "string",
             "nullable": true

@@ -23,36 +23,31 @@ namespace FlexFit.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // USER TPH
+            // 🔵 USER TPH (Admin, Member, Employee)
             modelBuilder.Entity<User>()
                 .HasDiscriminator<string>("UserType")
                 .HasValue<User>("Admin")
                 .HasValue<Member>("Member")
                 .HasValue<Employee>("Employee");
 
-           
-           
-
+            // 🟢 MEMBER → SUBSCRIPTION CARDS (1:N)
             modelBuilder.Entity<Member>()
-        .HasMany(m => m.SubscriptionCards)
-        .WithOne(c => c.Member)
-        .HasForeignKey(c => c.MemberId)
-        .OnDelete(DeleteBehavior.Cascade); // jer subscription ide uz registraciju
-
-            modelBuilder.Entity<Member>()
-                .HasMany(m => m.DailyCards)
+                .HasMany(m => m.SubscriptionCards)
                 .WithOne(c => c.Member)
                 .HasForeignKey(c => c.MemberId)
-                .OnDelete(DeleteBehavior.SetNull); // dnevne karte opciono
-            // UNIQUE
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // 🔥 UNIQUE CardNumber
             modelBuilder.Entity<MembershipCard>()
                 .HasIndex(c => c.CardNumber)
                 .IsUnique();
 
-            // MANY-TO-MANY
+            // 🟡 MANY-TO-MANY DailyCard ↔ FitnessObject
             modelBuilder.Entity<DailyCard>()
                 .HasMany(d => d.FitnessObjects)
                 .WithMany(f => f.DailyCards);
+
+          
         }
     }
 }

@@ -1,6 +1,6 @@
 namespace FlexFit.Application.DTOs
 {
-    public class CreateSubscriptionCardDto
+    public class SellDailyTicketDto
     {
         public string CardNumber { get; set; }
     }

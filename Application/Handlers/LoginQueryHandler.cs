@@ -29,7 +29,7 @@ namespace FlexFit.Application.Handlers
 
             if (user == null)
             {
-                // opcionalno: ako je Google login, kreiraj novi nalog
+               
                 if (request.LoginDto.IsGoogle)
                 {
                     user = new Member
@@ -43,21 +43,20 @@ namespace FlexFit.Application.Handlers
                 }
                 else
                 {
-                    return null; // email ne postoji i nije Google login
+                    return null; 
                 }
             }
 
-            // Provera password-a za obi?an login
+           
             if (!request.LoginDto.IsGoogle)
             {
                 if (user.Password == null || !BCrypt.Net.BCrypt.Verify(request.LoginDto.Password, user.Password))
-                    return null; // invalid credentials
+                    return null; 
             }
 
-            // Kreiranje tokena
+            
             var token = _tokenService.CreateToken(user);
 
-            // Logovanje u MongoDB
             var log = new Login
             {
                 UserId = user.Id.ToString(),

@@ -12,26 +12,21 @@ namespace FlexFit.Application.Handlers
 
         public async Task<bool> Handle(CreateDailyCardCommand request, CancellationToken cancellationToken)
         {
-            // Provera da li kartica ve? postoji
             var existingCard = await _uow.MembershipCards.GetByCardNumberAsync(request.Dto.CardNumber);
             if (existingCard != null) return false;
 
-            // Kreiranje nove DailyCard
             var card = new DailyCard
             {
                 CardNumber = request.Dto.CardNumber,
-                SerialNumber = request.Dto.SerialNumber,
-                PurchaseDate = DateTime.UtcNow.Date,
-                PurchaseTime = DateTime.UtcNow.TimeOfDay,
-                CardType = CardType.Daily
+                PurchaseDate = null,
+                FitnessObjects = new List<FitnessObject>()
             };
 
-            // Dodavanje jednog ili više FitnessObject-ova (ako ih DTO sadrži)
-            if (request.Dto.FitnessObjectIds != null && request.Dto.FitnessObjectIds.Any())
+            if (request.Dto.FitnessObjectIds != null)
             {
-                foreach (var objId in request.Dto.FitnessObjectIds)
+                foreach (var id in request.Dto.FitnessObjectIds)
                 {
-                    var fitnessObject = await _uow.FitnessObjects.GetByIdAsync(objId);
+                    var fitnessObject = await _uow.FitnessObjects.GetByIdAsync(id);
                     if (fitnessObject != null)
                     {
                         card.FitnessObjects.Add(fitnessObject);
@@ -39,10 +34,8 @@ namespace FlexFit.Application.Handlers
                 }
             }
 
-            // ?uvanje kartice u bazi
             await _uow.MembershipCards.AddAsync(card);
             await _uow.SaveAsync();
-
             return true;
         }
     }
