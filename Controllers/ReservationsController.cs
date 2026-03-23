@@ -1,6 +1,8 @@
 using FlexFit.Models;
 using FlexFit.UnitOfWorkLayer;
 using FlexFit.Application.DTOs;
+using FlexFit.Application.Commands;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +13,12 @@ namespace FlexFit.Controllers
     public class ReservationsController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
+        private readonly IMediator _mediator;
 
-        public ReservationsController(IUnitOfWork uow)
+        public ReservationsController(IUnitOfWork uow, IMediator mediator)
         {
             _uow = uow;
+            _mediator = mediator;
         }
 
         [HttpPost("book")]
@@ -35,9 +39,17 @@ namespace FlexFit.Controllers
         [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> MarkNoShow(int id)
         {
-            // Dummy logic to simulate penalizing no show.
-            // In a real application, you'd fetch the reservation, assign the penalty point, and save.
-            return Ok(new { message = "Kazneni poen je uspešno upisan zbog nepojavljivanja." });
+            var reservation = await _uow.Reservations.GetByIdAsync(id);
+            if (reservation == null) return NotFound(new { message = "Rezervacija nije pronađena." });
+
+            reservation.Status = ReservationStatus.NoShow;
+            await _uow.Reservations.UpdateAsync(reservation);
+            await _uow.SaveAsync();
+
+            var result = await _mediator.Send(new ProcessNoShowPenaltyCommand(id));
+            if (!result) return BadRequest(new { message = "Greška pri dodeljivanju kaznenog poena." });
+
+            return Ok(new { message = "Rezervacija označena kao 'NoShow' i kazneni poen je uspešno upisan." });
         }
 
         [HttpDelete("cancel/{id}")]

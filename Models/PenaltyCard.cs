@@ -12,5 +12,6 @@ namespace FlexFit.Models
         public string Reason { get; set; }
         public bool IsCanceled { get; set; } = false;
         public string? CancelReason { get; set; }
+        public bool IsPaid { get; set; } = false;
     }
 }

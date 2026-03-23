@@ -275,7 +275,6 @@ C:\Users\emina\Desktop\flexf\flex\FlexFit\obj\Debug\net8.0\staticwebassets.build
 C:\Users\emina\Desktop\flexf\flex\FlexFit\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\emina\Desktop\flexf\flex\FlexFit\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\emina\Desktop\flexf\flex\FlexFit\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\emina\Desktop\flexf\flex\FlexFit\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\emina\Desktop\flexf\flex\FlexFit\obj\Debug\net8.0\FlexFit.csproj.Up2Date
 C:\Users\emina\Desktop\flexf\flex\FlexFit\obj\Debug\net8.0\FlexFit.dll
 C:\Users\emina\Desktop\flexf\flex\FlexFit\obj\Debug\net8.0\refint\FlexFit.dll

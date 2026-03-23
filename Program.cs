@@ -20,6 +20,7 @@ namespace FlexFit
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddHttpContextAccessor();
 
             // PostgreSQL
             builder.Services.AddDbContext<AppDbContext>(options =>
@@ -36,7 +37,13 @@ namespace FlexFit
             builder.Services.AddScoped<RateLimitViolationRepository>();
             builder.Services.AddScoped<FlexFit.Repositories.Interfaces.ITimeSlotRepository, FlexFit.Repositories.TimeSlotRepository>();
             builder.Services.AddScoped<FlexFit.Repositories.Interfaces.IResourceRepository, FlexFit.Repositories.ResourceRepository>();
+            builder.Services.AddHostedService<FlexFit.Application.Services.ReservationBackgroundService>();
 
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+});
             // MediatR
             builder.Services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));

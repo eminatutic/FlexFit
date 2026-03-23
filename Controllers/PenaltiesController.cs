@@ -59,6 +59,14 @@ namespace FlexFit.Controllers
             return Ok(new { message = "Uspešno stornirano uz napomenu." });
         }
 
+        [HttpPost("{id}/pay")]
+        public async Task<IActionResult> Pay(int id)
+        {
+            var success = await _mediator.Send(new PayPenaltyCommand(id));
+            if (!success) return BadRequest(new { message = "Kazna nije pronađena, već je plaćena ili je stornirana." });
+            return Ok(new { message = "Kazna je uspešno plaćena." });
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id, [FromQuery] string type)
         {

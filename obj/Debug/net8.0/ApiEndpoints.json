@@ -197,6 +197,38 @@
   },
   {
     "ContainingType": "FlexFit.Controllers.GuardController",
+    "Method": "ExtendMembership",
+    "RelativePath": "api/Guard/extend-membership",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cardNumber",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlexFit.Controllers.GuardController",
+    "Method": "LogEntry",
+    "RelativePath": "api/Guard/log-entry",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FlexFit.Application.DTOs.LogEntryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlexFit.Controllers.GuardController",
     "Method": "SellDailyTicket",
     "RelativePath": "api/Guard/sell-daily-ticket",
     "HttpMethod": "POST",
@@ -306,6 +338,22 @@
       {
         "Name": "dto",
         "Type": "FlexFit.Controllers.PenaltiesController\u002BCancelDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlexFit.Controllers.PenaltiesController",
+    "Method": "Pay",
+    "RelativePath": "api/Penalties/{id}/pay",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

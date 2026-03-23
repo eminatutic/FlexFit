@@ -368,6 +368,68 @@
         }
       }
     },
+    "/api/Guard/extend-membership": {
+      "post": {
+        "tags": [
+          "Guard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Guard/log-entry": {
+      "post": {
+        "tags": [
+          "Guard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogEntryDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogEntryDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogEntryDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Members": {
       "get": {
         "tags": [
@@ -563,6 +625,29 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Penalties/{id}/pay": {
+      "post": {
+        "tags": [
+          "Penalties"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -1017,6 +1102,36 @@
         ],
         "type": "integer",
         "format": "int32"
+      },
+      "LogEntryDto": {
+        "type": "object",
+        "properties": {
+          "memberId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fitnessObjectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cardNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardType": {
+            "type": "string",
+            "nullable": true
+          },
+          "employeeId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
       },
       "LoginDto": {
         "type": "object",
