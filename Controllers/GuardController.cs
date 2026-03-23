@@ -32,7 +32,7 @@ namespace FlexFit.Controllers
         }
 
         [HttpPost("create-daily-card")]
-        [Authorize(Roles = "Admin,Employee,1,Redar")]
+        [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> CreateDailyCard([FromBody] CreateDailyCardDto dto)
         {
             var result = await _mediator.Send(new CreateDailyCardCommand(dto));
@@ -41,7 +41,7 @@ namespace FlexFit.Controllers
         }
 
         [HttpPost("create-subscription-card")]
-        [Authorize(Roles = "Admin,Employee,1,Redar")]
+        [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> CreateSubscriptionCard([FromBody] CreateSubscriptionCardDto dto)
         {
             var result = await _mediator.Send(new CreateSubscriptionCardCommand(dto));

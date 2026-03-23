@@ -1,4 +1,4 @@
-﻿using FlexFit.Models;
+using FlexFit.Models;
 
 namespace FlexFit.Repositories.Interfaces
 {
@@ -9,5 +9,7 @@ namespace FlexFit.Repositories.Interfaces
         Task AddAsync(Resource resource);
         Task UpdateAsync(Resource resource);
         Task DeleteAsync(Resource resource);
+
+        Task<Resource> CreateResourceAsync(FlexFit.Application.DTOs.CreateResourceDto dto);
     }
 }

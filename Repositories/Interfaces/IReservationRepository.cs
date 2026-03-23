@@ -10,5 +10,6 @@ namespace FlexFit.Repositories.Interfaces
         Task AddAsync(Reservation reservation);
         Task UpdateAsync(Reservation reservation);
         Task DeleteAsync(Reservation reservation);
+        Task<(bool isSuccess, string message)> BookResourceAsync(FlexFit.Application.DTOs.ReservationDto dto);
     }
 }

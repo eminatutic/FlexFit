@@ -2,6 +2,7 @@ using FlexFit.Data;
 using FlexFit.Models;
 using FlexFit.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using FlexFit.Application.DTOs;
 
 namespace FlexFit.Repositories
 {
@@ -49,6 +50,52 @@ namespace FlexFit.Repositories
         {
             _context.Reservations.Remove(reservation);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<(bool isSuccess, string message)> BookResourceAsync(ReservationDto dto)
+        {
+            if (dto.StartTime >= dto.EndTime)
+                return (false, "Početno vreme mora biti pre krajnjeg.");
+
+            // PREVENT DUPLICATE RESERVATIONS FOR SAME USER
+            var alreadyBooked = await _context.Reservations.AnyAsync(r => 
+                r.MemberId == dto.MemberId && r.ResourceId == dto.ResourceId && r.StartTime == dto.StartTime && r.Status != ReservationStatus.NoShow);
+
+            if (alreadyBooked)
+            {
+                return (false, "Već ste uspešno zakazali ovaj termin. Nije moguće zakazati isti termin više puta.");
+            }
+
+            var resource = await _context.Resources.FindAsync(dto.ResourceId);
+            int maxCapacity = (resource != null && resource.Type == ResourceType.GrupnaSala) ? 10 : 5;
+
+            var concurrent = await _context.Reservations
+                .Where(r => 
+                    r.ResourceId == dto.ResourceId &&
+                    r.Status != ReservationStatus.NoShow &&
+                    ((dto.StartTime >= r.StartTime && dto.StartTime < r.EndTime) || 
+                     (dto.EndTime > r.StartTime && dto.EndTime <= r.EndTime) || 
+                     (dto.StartTime <= r.StartTime && dto.EndTime >= r.EndTime))
+                ).ToListAsync();
+
+            if (concurrent.Count >= maxCapacity)
+            {
+                return (false, $"Maksimalan broj osoba ({maxCapacity}) za ovaj termin je već popunjen.");
+            }
+
+            var reservation = new Reservation
+            {
+                MemberId = dto.MemberId,
+                ResourceId = dto.ResourceId,
+                StartTime = dto.StartTime,
+                EndTime = dto.EndTime,
+                Status = ReservationStatus.Reserved
+            };
+
+            await _context.Reservations.AddAsync(reservation);
+            await _context.SaveChangesAsync();
+            
+            return (true, "Rezervacija uspešna.");
         }
     }
 }

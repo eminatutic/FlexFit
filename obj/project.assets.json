@@ -4615,11 +4615,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\FlexFit.csproj",
+      "projectUniqueName": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\FlexFit.csproj",
       "projectName": "FlexFit",
-      "projectPath": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\FlexFit.csproj",
+      "projectPath": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\FlexFit.csproj",
       "packagesPath": "C:\\Users\\emina\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\obj\\",
+      "outputPath": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

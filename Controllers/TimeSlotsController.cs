@@ -1,8 +1,7 @@
-using FlexFit.Data;
-using FlexFit.Models;
+using FlexFit.Application.DTOs;
+using FlexFit.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace FlexFit.Controllers
 {
@@ -10,38 +9,18 @@ namespace FlexFit.Controllers
     [Route("api/[controller]")]
     public class TimeSlotsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly ITimeSlotRepository _repository;
 
-        public TimeSlotsController(AppDbContext context)
+        public TimeSlotsController(ITimeSlotRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         [HttpGet("{resourceId}")]
         public async Task<IActionResult> GetTimeSlots(int resourceId)
         {
             try {
-                var slots = await _context.TimeSlots
-                    .Where(ts => ts.ResourceId == resourceId)
-                    .OrderBy(ts => ts.StartTime)
-                    .ToListAsync();
-
-                var reservations = await _context.Reservations
-                    .Where(r => r.ResourceId == resourceId && r.Status != FlexFit.Models.ReservationStatus.NoShow)
-                    .ToListAsync();
-
-                var result = slots.Select(ts => new {
-                    id = ts.Id,
-                    resourceId = ts.ResourceId,
-                    startTime = ts.StartTime,
-                    endTime = ts.EndTime,
-                    availableSpots = 10 - reservations.Count(r => 
-                        (ts.StartTime >= r.StartTime && ts.StartTime < r.EndTime) || 
-                        (ts.EndTime > r.StartTime && ts.EndTime <= r.EndTime) || 
-                        (ts.StartTime <= r.StartTime && ts.EndTime >= r.EndTime)
-                    )
-                });
-
+                var result = await _repository.GetTimeSlotsAsync(resourceId);
                 return Ok(result);
             } catch (Exception ex) {
                 return StatusCode(500, new { error = ex.Message, inner = ex.InnerException?.Message, stackTrace = ex.StackTrace });
@@ -49,48 +28,28 @@ namespace FlexFit.Controllers
         }
 
         [HttpPost]
-        // [Authorize(Roles = "Admin,Employee,1,2,Redar")]
+        // [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> CreateTimeSlot([FromBody] TimeSlotDto dto)
         {
             try {
-                if (dto.StartTime >= dto.EndTime)
-                    return BadRequest("Početno vreme mora biti pre krajnjeg.");
-
-                var timeSlot = new TimeSlot
-                {
-                    ResourceId = dto.ResourceId,
-                    StartTime = dto.StartTime,
-                    EndTime = dto.EndTime
-                };
-
-                await _context.TimeSlots.AddAsync(timeSlot);
-                await _context.SaveChangesAsync();
-
-                return Ok(new { message = "Predloženi termin uspešno dodat.", id = timeSlot.Id });
+                var id = await _repository.CreateTimeSlotAsync(dto);
+                return Ok(new { message = "Predloženi termin uspešno dodat.", id = id });
+            } catch (ArgumentException ex) {
+                return BadRequest(ex.Message);
             } catch (Exception ex) {
                 return StatusCode(500, new { error = ex.Message, details = ex.InnerException?.Message });
             }
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin,Employee,1,2,Redar")]
+        [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> DeleteTimeSlot(int id)
         {
-            var timeSlot = await _context.TimeSlots.FindAsync(id);
-            if (timeSlot == null)
+            var success = await _repository.DeleteTimeSlotAsync(id);
+            if (!success)
                 return NotFound("Termin nije pronađen.");
-
-            _context.TimeSlots.Remove(timeSlot);
-            await _context.SaveChangesAsync();
 
             return Ok(new { message = "Termin uspešno obrisan." });
         }
-    }
-
-    public class TimeSlotDto
-    {
-        public int ResourceId { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
     }
 }

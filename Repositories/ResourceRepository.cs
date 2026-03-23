@@ -1,4 +1,4 @@
-﻿using FlexFit.Data;
+using FlexFit.Data;
 using FlexFit.Models;
 using FlexFit.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +36,24 @@ namespace FlexFit.Repositories
         {
             _context.Resources.Remove(resource);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Resource> CreateResourceAsync(FlexFit.Application.DTOs.CreateResourceDto dto)
+        {
+            var resource = new Resource
+            {
+                Type = dto.Type,
+                Status = dto.Status,
+                Floor = dto.Floor,
+                IsPremium = dto.IsPremium,
+                PremiumFee = dto.PremiumFee,
+                FitnessObjectId = dto.FitnessObjectId
+            };
+
+            await _context.Resources.AddAsync(resource);
+            await _context.SaveChangesAsync();
+            
+            return resource;
         }
     }
 }

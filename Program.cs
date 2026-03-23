@@ -34,6 +34,8 @@ namespace FlexFit
             builder.Services.AddScoped<LoginRepository>();
             builder.Services.AddScoped<IncidentRepository>();
             builder.Services.AddScoped<RateLimitViolationRepository>();
+            builder.Services.AddScoped<FlexFit.Repositories.Interfaces.ITimeSlotRepository, FlexFit.Repositories.TimeSlotRepository>();
+            builder.Services.AddScoped<FlexFit.Repositories.Interfaces.IResourceRepository, FlexFit.Repositories.ResourceRepository>();
 
             // MediatR
             builder.Services.AddMediatR(cfg =>

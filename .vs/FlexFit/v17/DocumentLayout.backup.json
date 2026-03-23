@@ -1,7 +1,28 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flexf\\flex\\flexfit\\migrations\\20260323154439_upda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:migrations\\20260323154439_upda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flexf\\flex\\flexfit\\application\\dtos\\employeeregistrationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:application\\dtos\\employeeregistrationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flexf\\flex\\flexfit\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flexf\\flex\\flexfit\\models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flexf\\flex\\flexfit\\flexfit.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:flexfit.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,6 +51,67 @@
             {
               "$type": "Bookmark",
               "Name": "ST:6:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20260323154439_upda.cs",
+              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Migrations\\20260323154439_upda.cs",
+              "RelativeDocumentMoniker": "Migrations\\20260323154439_upda.cs",
+              "ToolTip": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Migrations\\20260323154439_upda.cs",
+              "RelativeToolTip": "Migrations\\20260323154439_upda.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T15:44:39.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T14:33:49.665Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EmployeeRegistrationDto.cs",
+              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Application\\DTOs\\EmployeeRegistrationDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\EmployeeRegistrationDto.cs",
+              "ToolTip": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Application\\DTOs\\EmployeeRegistrationDto.cs",
+              "RelativeToolTip": "Application\\DTOs\\EmployeeRegistrationDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T14:31:33.269Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Reservation.cs",
+              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Models\\Reservation.cs",
+              "RelativeDocumentMoniker": "Models\\Reservation.cs",
+              "ToolTip": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Models\\Reservation.cs",
+              "RelativeToolTip": "Models\\Reservation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T14:28:51.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FlexFit.http",
+              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\FlexFit.http",
+              "RelativeDocumentMoniker": "FlexFit.http",
+              "ToolTip": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\FlexFit.http",
+              "RelativeToolTip": "FlexFit.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-03-23T13:57:02.575Z"
             }
           ]
         }

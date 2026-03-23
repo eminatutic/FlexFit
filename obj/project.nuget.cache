@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xtuhDsMiP04=",
+  "dgSpecHash": "AQTBGvCBa70=",
   "success": true,
-  "projectFilePath": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\FlexFit.csproj",
+  "projectFilePath": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\FlexFit.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\emina\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\emina\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
@@ -107,9 +107,9 @@
       "code": "NU1603",
       "level": "Warning",
       "message": "FlexFit depends on Microsoft.EntityFrameworkCore (>= 8.0.9) but Microsoft.EntityFrameworkCore 8.0.9 was not found. Microsoft.EntityFrameworkCore 8.0.10 was resolved instead.",
-      "projectPath": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\FlexFit.csproj",
+      "projectPath": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\FlexFit.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\FlexFit.csproj",
+      "filePath": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\FlexFit.csproj",
       "libraryId": "Microsoft.EntityFrameworkCore",
       "targetGraphs": [
         "net8.0"
@@ -119,9 +119,9 @@
       "code": "NU1603",
       "level": "Warning",
       "message": "FlexFit depends on Microsoft.EntityFrameworkCore.Design (>= 8.0.9) but Microsoft.EntityFrameworkCore.Design 8.0.9 was not found. Microsoft.EntityFrameworkCore.Design 8.0.10 was resolved instead.",
-      "projectPath": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\FlexFit.csproj",
+      "projectPath": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\FlexFit.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\emina\\Desktop\\flex\\FlexFit\\FlexFit.csproj",
+      "filePath": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\FlexFit.csproj",
       "libraryId": "Microsoft.EntityFrameworkCore.Design",
       "targetGraphs": [
         "net8.0"
