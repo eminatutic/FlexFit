@@ -17,6 +17,7 @@ namespace FlexFit.Presentation.Middleware
         {
             { "/api/fitnessobjects", (30, TimeSpan.FromMinutes(1)) },
             { "/api/membershipcards/check-code", (3, TimeSpan.FromMinutes(1)) },
+            { "/api/auth/register-member", (3, TimeSpan.FromMinutes(1)) },
             { "/api/guard/log-entry", (60, TimeSpan.FromMinutes(1)) }
         };
 
@@ -54,6 +55,9 @@ namespace FlexFit.Presentation.Middleware
             }
 
             var requests = RequestLog.GetOrAdd(key, _ => new List<DateTime>());
+            bool overLimit = false;
+            int remaining = 0;
+
             lock (requests)
             {
                 requests.RemoveAll(t => DateTime.UtcNow - t >= limit.Period);
@@ -62,13 +66,22 @@ namespace FlexFit.Presentation.Middleware
                 {
                     BlockedKeys[key] = DateTime.UtcNow.AddMinutes(15);
                     LogViolation(context, ip, userId, path);
-                    SendTooManyRequestsResponse(context, "Previse zahteva. Pristup blokiran na 15 minuta.").Wait();
-                    return;
+                    overLimit = true;
                 }
-                
-                requests.Add(DateTime.UtcNow);
-                context.Response.Headers["X-RateLimit-Remaining"] = (limit.Limit - requests.Count).ToString();
+                else
+                {
+                    requests.Add(DateTime.UtcNow);
+                    remaining = limit.Limit - requests.Count;
+                }
             }
+
+            if (overLimit)
+            {
+                await SendTooManyRequestsResponse(context, "Previse zahteva. Pristup blokiran na 15 minuta.");
+                return;
+            }
+
+            context.Response.Headers["X-RateLimit-Remaining"] = remaining.ToString();
 
             await _next(context);
         }
