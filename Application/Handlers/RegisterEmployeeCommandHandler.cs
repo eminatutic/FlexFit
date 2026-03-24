@@ -1,6 +1,6 @@
-using FlexFit.Application.Commands;
-using FlexFit.Models;
-using FlexFit.UnitOfWorkLayer;
+﻿using FlexFit.Application.Commands;
+using FlexFit.Domain.Models;
+using FlexFit.Infrastructure.UnitOfWorkLayer;
 using MediatR;
 using BCrypt.Net;
 

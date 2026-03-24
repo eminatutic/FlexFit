@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flexf\\flex\\flexfit\\migrations\\20260324104932_user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:migrations\\20260324104932_user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flexf\\flex\\flexfit\\presentation\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:presentation\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flexf\\flex\\flexfit\\application\\handlers\\loginqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:application\\handlers\\loginqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|c:\\users\\emina\\desktop\\flexf\\flex\\flexfit\\infrastructure\\token\\token.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30F5444C-F0DE-4477-AF4A-FD0157BD50CC}|FlexFit.csproj|solutionrelative:infrastructure\\token\\token.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,14 +47,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "20260324104932_user.cs",
-              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Migrations\\20260324104932_user.cs",
-              "RelativeDocumentMoniker": "Migrations\\20260324104932_user.cs",
-              "ToolTip": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Migrations\\20260324104932_user.cs",
-              "RelativeToolTip": "Migrations\\20260324104932_user.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Presentation\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Presentation\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAwwFcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T10:49:32.843Z",
+              "WhenOpened": "2026-03-24T11:36:47.403Z",
               "EditorCaption": ""
             },
             {
@@ -61,9 +65,22 @@
               "RelativeDocumentMoniker": "Application\\Handlers\\LoginQueryHandler.cs",
               "ToolTip": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Application\\Handlers\\LoginQueryHandler.cs",
               "RelativeToolTip": "Application\\Handlers\\LoginQueryHandler.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAswEoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T10:48:34.95Z",
+              "WhenOpened": "2026-03-24T11:36:19.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Token.cs",
+              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Infrastructure\\Token\\Token.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Token\\Token.cs",
+              "ToolTip": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Infrastructure\\Token\\Token.cs",
+              "RelativeToolTip": "Infrastructure\\Token\\Token.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAswFIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T11:35:55.897Z",
               "EditorCaption": ""
             }
           ]

@@ -1,6 +1,6 @@
-using FlexFit.Application.Queries;
-using FlexFit.Models;
-using FlexFit.UnitOfWorkLayer;
+﻿using FlexFit.Application.Queries;
+using FlexFit.Domain.Models;
+using FlexFit.Infrastructure.UnitOfWorkLayer;
 using MediatR;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace FlexFit.Application.Handlers
         public async Task<IEnumerable<Member>> Handle(GetAllMembersQuery request, CancellationToken cancellationToken)
         {
             var all = await _uow.Members.GetAllAsync();
-            return all.Where(m => m.Role == FlexFit.Models.Role.Member);
+            return all.Where(m => m.Role == FlexFit.Domain.Models.Role.Member);
         }
     }
 }

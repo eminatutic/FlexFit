@@ -1,6 +1,6 @@
-using FlexFit.Application.Commands;
-using FlexFit.Models;
-using FlexFit.UnitOfWorkLayer;
+﻿using FlexFit.Application.Commands;
+using FlexFit.Domain.Models;
+using FlexFit.Infrastructure.UnitOfWorkLayer;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -34,7 +34,7 @@ namespace FlexFit.Application.Services
 
             var now = DateTime.UtcNow;
             
-            // Pronađi sve rezervacije koje su istekle a nisu iskorišćene
+            // PronaÄ‘i sve rezervacije koje su istekle a nisu iskoriÅ¡Ä‡ene
             var expiredReservations = await uow.Reservations.FindAsync(r => 
                 r.Status == ReservationStatus.Reserved && 
                 r.EndTime < now);
@@ -52,8 +52,8 @@ namespace FlexFit.Application.Services
                 }
                 catch (Exception ex)
                 {
-                    // Možemo dodati logovanje ovde ako je potrebno
-                    Console.WriteLine($"Greška pri obradi no-show rezervacije {reservation.Id}: {ex.Message}");
+                    // MoÅ¾emo dodati logovanje ovde ako je potrebno
+                    Console.WriteLine($"GreÅ¡ka pri obradi no-show rezervacije {reservation.Id}: {ex.Message}");
                 }
             }
         }

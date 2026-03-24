@@ -1,4 +1,4 @@
-using FlexFit.Models;
+﻿using FlexFit.Domain.Models;
 using MediatR;
 using System.Collections.Generic;
 

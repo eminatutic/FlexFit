@@ -1,10 +1,12 @@
 using System.Reflection;
 using System.Text;
-using FlexFit.Data;
-using FlexFit.Middleware;
-using FlexFit.MongoModels.Repositories;
-using FlexFit.Token;
-using FlexFit.UnitOfWorkLayer;
+using FlexFit.Infrastructure.Data;
+using FlexFit.Presentation.Middleware;
+using FlexFit.Domain.MongoModels.Repositories;
+using FlexFit.Infrastructure.Token;
+using FlexFit.Infrastructure.UnitOfWorkLayer;
+using FlexFit.Domain.Interfaces.Repositories;
+using FlexFit.Infrastructure.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
@@ -29,14 +31,18 @@ namespace FlexFit
             // MongoDB
             builder.Services.AddSingleton<MongoDbContext>();
 
+            // Neo4j
+            builder.Services.AddSingleton<Neo4jContext>();
+
             // Unit of Work + repositories
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<EntryLogRepository>();
             builder.Services.AddScoped<LoginRepository>();
             builder.Services.AddScoped<IncidentRepository>();
             builder.Services.AddScoped<RateLimitViolationRepository>();
-            builder.Services.AddScoped<FlexFit.Repositories.Interfaces.ITimeSlotRepository, FlexFit.Repositories.TimeSlotRepository>();
-            builder.Services.AddScoped<FlexFit.Repositories.Interfaces.IResourceRepository, FlexFit.Repositories.ResourceRepository>();
+            builder.Services.AddScoped<FlexFit.Infrastructure.Repositories.Interfaces.ITimeSlotRepository, FlexFit.Infrastructure.Repositories.TimeSlotRepository>();
+            builder.Services.AddScoped<FlexFit.Infrastructure.Repositories.Interfaces.IResourceRepository, FlexFit.Infrastructure.Repositories.ResourceRepository>();
+            builder.Services.AddScoped<IMemberGraphRepository, MemberGraphRepository>();
             builder.Services.AddHostedService<FlexFit.Application.Services.ReservationBackgroundService>();
 
 

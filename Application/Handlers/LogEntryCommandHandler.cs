@@ -1,9 +1,11 @@
 using FlexFit.Application.Commands;
-using FlexFit.Models;
-using FlexFit.MongoModels.Models;
-using FlexFit.MongoModels.Repositories;
-using FlexFit.UnitOfWorkLayer;
+using FlexFit.Domain.Models;
+using FlexFit.Domain.MongoModels.Models;
+using FlexFit.Domain.MongoModels.Repositories;
+using FlexFit.Infrastructure.UnitOfWorkLayer;
 using MediatR;
+
+using FlexFit.Domain.Interfaces.Repositories;
 
 namespace FlexFit.Application.Handlers
 {
@@ -11,11 +13,13 @@ namespace FlexFit.Application.Handlers
     {
         private readonly IUnitOfWork _uow;
         private readonly EntryLogRepository _mongoRepo;
+        private readonly IMemberGraphRepository _graphRepo;
 
-        public LogEntryCommandHandler(IUnitOfWork uow, EntryLogRepository mongoRepo)
+        public LogEntryCommandHandler(IUnitOfWork uow, EntryLogRepository mongoRepo, IMemberGraphRepository graphRepo)
         {
             _uow = uow;
             _mongoRepo = mongoRepo;
+            _graphRepo = graphRepo;
         }
 
         public async Task<bool> Handle(LogEntryCommand request, CancellationToken cancellationToken)
@@ -37,6 +41,12 @@ namespace FlexFit.Application.Handlers
 
             await _mongoRepo.AddAsync(log);
 
+            // Sync visit to Neo4j (Simplified: IDs only)
+            if (dto.MemberId > 0)
+            {
+                await _graphRepo.RecordVisitAsync(dto.MemberId.ToString(), dto.FitnessObjectId);
+            }
+
             // 2. Automated Penalty for Daily/Subscription card violations
             bool isExpired = dto.CardStatus != "Active" && dto.CardStatus != "Aktivna";
             bool isDailyOrSub = dto.CardType == "Daily" || dto.CardType == "Dnevna" || 
@@ -44,7 +54,7 @@ namespace FlexFit.Application.Handlers
 
             if (isExpired && isDailyOrSub && dto.MemberId > 0)
             {
-                // Provera da li je kazna već izdata u poslednjih 12h
+                // Provera da li je kazna veÄ‡ izdata u poslednjih 12h
                 bool hasRecentPenalty = await _uow.PenaltyCards.HasRecentPenaltyAsync(dto.MemberId, 12);
 
                 if (!hasRecentPenalty)
@@ -56,7 +66,7 @@ namespace FlexFit.Application.Handlers
                         FitnessObjectId = dto.FitnessObjectId,
                         Date = DateTime.UtcNow,
                         Price = 1000, // 500 (daily) + 500 (extra)
-                        Reason = $"Automatski izdata kazna zbog nevažeće kartice ({dto.CardNumber}). Tip: {dto.CardType}, Status: {dto.CardStatus}"
+                        Reason = $"Automatski izdata kazna zbog nevaÅ¾eÄ‡e kartice ({dto.CardNumber}). Tip: {dto.CardType}, Status: {dto.CardStatus}"
                     };
 
                     await _uow.PenaltyCards.AddAsync(penalty);

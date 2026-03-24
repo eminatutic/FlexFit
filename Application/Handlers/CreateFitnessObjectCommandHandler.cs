@@ -1,13 +1,19 @@
 using FlexFit.Application.Commands;
-using FlexFit.UnitOfWorkLayer;
+using FlexFit.Infrastructure.UnitOfWorkLayer;
 using MediatR;
+
+using FlexFit.Domain.Interfaces.Repositories;
 
 namespace FlexFit.Application.Handlers
 {
     public class CreateFitnessObjectCommandHandler : IRequestHandler<CreateFitnessObjectCommand, bool>
     {
         private readonly IUnitOfWork _uow;
-        public CreateFitnessObjectCommandHandler(IUnitOfWork uow) => _uow = uow;
+
+        public CreateFitnessObjectCommandHandler(IUnitOfWork uow)
+        {
+            _uow = uow;
+        }
 
         public async Task<bool> Handle(CreateFitnessObjectCommand request, CancellationToken cancellationToken)
         {
@@ -22,6 +28,7 @@ namespace FlexFit.Application.Handlers
 
             await _uow.FitnessObjects.AddAsync(fitnessObject);
             await _uow.SaveAsync();
+
             return true;
         }
     }

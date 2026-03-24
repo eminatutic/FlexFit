@@ -1,8 +1,10 @@
 using FlexFit.Application.Commands;
-using FlexFit.Models;
-using FlexFit.UnitOfWorkLayer;
+using FlexFit.Domain.Models;
+using FlexFit.Infrastructure.UnitOfWorkLayer;
 using MediatR;
 using BCrypt.Net;
+
+using FlexFit.Domain.Interfaces.Repositories;
 
 namespace FlexFit.Application.Handlers
 {

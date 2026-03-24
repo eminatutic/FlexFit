@@ -1,4 +1,4 @@
-namespace FlexFit.Application.DTOs
+﻿namespace FlexFit.Application.DTOs
 {
     public class LoginDto
     {

@@ -1,6 +1,6 @@
-using FlexFit.Application.Queries;
-using FlexFit.Models;
-using FlexFit.UnitOfWorkLayer;
+﻿using FlexFit.Application.Queries;
+using FlexFit.Domain.Models;
+using FlexFit.Infrastructure.UnitOfWorkLayer;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading;

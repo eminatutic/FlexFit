@@ -1,4 +1,4 @@
-using FlexFit.Models;
+﻿using FlexFit.Domain.Models;
 
 namespace FlexFit.Application.DTOs
 {

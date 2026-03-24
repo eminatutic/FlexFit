@@ -1,8 +1,8 @@
-using FlexFit.Application.Queries;
-using FlexFit.UnitOfWorkLayer;
+﻿using FlexFit.Application.Queries;
+using FlexFit.Infrastructure.UnitOfWorkLayer;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using FlexFit.Data;
+using FlexFit.Infrastructure.Data;
 
 namespace FlexFit.Application.Handlers
 {
@@ -20,13 +20,13 @@ namespace FlexFit.Application.Handlers
         public async Task<StatisticsDto> Handle(GetStatisticsQuery request, CancellationToken cancellationToken)
         {
             var allCards = await _uow.MembershipCards.GetAllAsync();
-            var subCards = allCards.OfType<FlexFit.Models.SubscriptionCard>().Count();
+            var subCards = allCards.OfType<FlexFit.Domain.Models.SubscriptionCard>().Count();
             var dailyCards = allCards.OfType<global::DailyCard>().Count();
             
             var allPenalties = await _uow.PenaltyCards.GetAllAsync();
             var totalPenaltyRevenue = allPenalties.Where(p => !p.IsCanceled).Sum(p => p.Price);
 
-            var activeMembers = await _context.Users.CountAsync(u => u.Role == FlexFit.Models.Role.Member);
+            var activeMembers = await _context.Users.CountAsync(u => u.Role == FlexFit.Domain.Models.Role.Member);
 
             return new StatisticsDto
             {

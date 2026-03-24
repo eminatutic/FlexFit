@@ -19,6 +19,7 @@
           "Microsoft.EntityFrameworkCore.Design": "8.0.10",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.10",
           "MongoDB.Driver": "3.7.0",
+          "Neo4j.Driver": "6.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4",
           "Swashbuckle.AspNetCore": "6.6.2",
           "System.IdentityModel.Tokens.Jwt": "7.1.2"
@@ -397,7 +398,7 @@
           "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
           "Microsoft.CodeAnalysis.Common": "4.5.0",
           "System.Composition": "6.0.0",
-          "System.IO.Pipelines": "6.0.3",
+          "System.IO.Pipelines": "8.0.0",
           "System.Threading.Channels": "6.0.0"
         },
         "runtime": {
@@ -774,6 +775,17 @@
           }
         }
       },
+      "Neo4j.Driver/6.0.0": {
+        "dependencies": {
+          "System.IO.Pipelines": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Neo4j.Driver.dll": {
+            "assemblyVersion": "6.0.4.0",
+            "fileVersion": "6.0.0.0"
+          }
+        }
+      },
       "Npgsql/8.0.3": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "10.0.0"
@@ -947,7 +959,7 @@
           }
         }
       },
-      "System.IO.Pipelines/6.0.3": {},
+      "System.IO.Pipelines/8.0.0": {},
       "System.Memory/4.5.5": {},
       "System.Reflection.Metadata/6.0.1": {
         "dependencies": {
@@ -1474,6 +1486,13 @@
       "path": "mono.texttemplating/2.2.1",
       "hashPath": "mono.texttemplating.2.2.1.nupkg.sha512"
     },
+    "Neo4j.Driver/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ejoXojkPz9qf4lSpFm3JACKHd8oQLWrQGYGC/dnHAcEqe76NIL/PbjLCbQq3dsDEAdUH/CuVe7wl0E5JuY3H2g==",
+      "path": "neo4j.driver/6.0.0",
+      "hashPath": "neo4j.driver.6.0.0.nupkg.sha512"
+    },
     "Npgsql/8.0.3": {
       "type": "package",
       "serviceable": true,
@@ -1607,12 +1626,12 @@
       "path": "system.identitymodel.tokens.jwt/7.1.2",
       "hashPath": "system.identitymodel.tokens.jwt.7.1.2.nupkg.sha512"
     },
-    "System.IO.Pipelines/6.0.3": {
+    "System.IO.Pipelines/8.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ryTgF+iFkpGZY1vRQhfCzX0xTdlV3pyaTTqRu2ETbEv+HlV7O6y7hyQURnghNIXvctl5DuZ//Dpks6HdL/Txgw==",
-      "path": "system.io.pipelines/6.0.3",
-      "hashPath": "system.io.pipelines.6.0.3.nupkg.sha512"
+      "sha512": "sha512-FHNOatmUq0sqJOkTx+UF/9YK1f180cnW5FVqnQMvYUN0elp6wFzbtPSiqbo1/ru8ICp43JM1i7kKkk6GsNGHlA==",
+      "path": "system.io.pipelines/8.0.0",
+      "hashPath": "system.io.pipelines.8.0.0.nupkg.sha512"
     },
     "System.Memory/4.5.5": {
       "type": "package",

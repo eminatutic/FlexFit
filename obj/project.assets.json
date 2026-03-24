@@ -1273,6 +1273,22 @@
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
         }
       },
+      "Neo4j.Driver/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Pipelines": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Neo4j.Driver.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Neo4j.Driver.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Npgsql/8.0.3": {
         "type": "package",
         "dependencies": {
@@ -1569,20 +1585,20 @@
           }
         }
       },
-      "System.IO.Pipelines/6.0.3": {
+      "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/System.IO.Pipelines.dll": {
+          "lib/net8.0/System.IO.Pipelines.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/System.IO.Pipelines.dll": {
+          "lib/net8.0/System.IO.Pipelines.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Memory/4.5.5": {
@@ -3783,6 +3799,24 @@
         "mono.texttemplating.nuspec"
       ]
     },
+    "Neo4j.Driver/6.0.0": {
+      "sha512": "ejoXojkPz9qf4lSpFm3JACKHd8oQLWrQGYGC/dnHAcEqe76NIL/PbjLCbQq3dsDEAdUH/CuVe7wl0E5JuY3H2g==",
+      "type": "package",
+      "path": "neo4j.driver/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Neo4j-icon-color.png",
+        "lib/net10.0/Neo4j.Driver.dll",
+        "lib/net10.0/Neo4j.Driver.xml",
+        "lib/net8.0/Neo4j.Driver.dll",
+        "lib/net8.0/Neo4j.Driver.xml",
+        "lib/net9.0/Neo4j.Driver.dll",
+        "lib/net9.0/Neo4j.Driver.xml",
+        "neo4j.driver.6.0.0.nupkg.sha512",
+        "neo4j.driver.nuspec"
+      ]
+    },
     "Npgsql/8.0.3": {
       "sha512": "6WEmzsQJCZAlUG1pThKg/RmeF6V+I0DmBBBE/8YzpRtEzhyZzKcK7ulMANDm5CkxrALBEC8H+5plxHWtIL7xnA==",
       "type": "package",
@@ -4206,27 +4240,31 @@
         "system.identitymodel.tokens.jwt.nuspec"
       ]
     },
-    "System.IO.Pipelines/6.0.3": {
-      "sha512": "ryTgF+iFkpGZY1vRQhfCzX0xTdlV3pyaTTqRu2ETbEv+HlV7O6y7hyQURnghNIXvctl5DuZ//Dpks6HdL/Txgw==",
+    "System.IO.Pipelines/8.0.0": {
+      "sha512": "FHNOatmUq0sqJOkTx+UF/9YK1f180cnW5FVqnQMvYUN0elp6wFzbtPSiqbo1/ru8ICp43JM1i7kKkk6GsNGHlA==",
       "type": "package",
-      "path": "system.io.pipelines/6.0.3",
+      "path": "system.io.pipelines/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.IO.Pipelines.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
         "buildTransitive/netcoreapp2.0/System.IO.Pipelines.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.IO.Pipelines.dll",
-        "lib/net461/System.IO.Pipelines.xml",
+        "lib/net462/System.IO.Pipelines.dll",
+        "lib/net462/System.IO.Pipelines.xml",
         "lib/net6.0/System.IO.Pipelines.dll",
         "lib/net6.0/System.IO.Pipelines.xml",
-        "lib/netcoreapp3.1/System.IO.Pipelines.dll",
-        "lib/netcoreapp3.1/System.IO.Pipelines.xml",
+        "lib/net7.0/System.IO.Pipelines.dll",
+        "lib/net7.0/System.IO.Pipelines.xml",
+        "lib/net8.0/System.IO.Pipelines.dll",
+        "lib/net8.0/System.IO.Pipelines.xml",
         "lib/netstandard2.0/System.IO.Pipelines.dll",
         "lib/netstandard2.0/System.IO.Pipelines.xml",
-        "system.io.pipelines.6.0.3.nupkg.sha512",
+        "system.io.pipelines.8.0.0.nupkg.sha512",
         "system.io.pipelines.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -4603,6 +4641,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 8.0.9",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.10",
       "MongoDB.Driver >= 3.7.0",
+      "Neo4j.Driver >= 6.0.0",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.4",
       "Swashbuckle.AspNetCore >= 6.6.2",
       "System.IdentityModel.Tokens.Jwt >= 7.1.2"
@@ -4703,6 +4742,10 @@
           "MongoDB.Driver": {
             "target": "Package",
             "version": "[3.7.0, )"
+          },
+          "Neo4j.Driver": {
+            "target": "Package",
+            "version": "[6.0.0, )"
           },
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
             "target": "Package",

@@ -1,4 +1,4 @@
-using FlexFit.Models;
+﻿using FlexFit.Domain.Models;
 using MediatR;
 
 namespace FlexFit.Application.Commands

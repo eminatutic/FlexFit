@@ -1,4 +1,4 @@
-using FlexFit.Application.DTOs;
+﻿using FlexFit.Application.DTOs;
 using MediatR;
 
 namespace FlexFit.Application.Commands

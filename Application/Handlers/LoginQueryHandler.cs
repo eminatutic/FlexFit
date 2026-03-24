@@ -1,10 +1,10 @@
-using BCrypt.Net;
+﻿using BCrypt.Net;
 using FlexFit.Application.Queries;
-using FlexFit.Data;
-using FlexFit.Models;
-using FlexFit.MongoModels.Models;
-using FlexFit.MongoModels.Repositories;
-using FlexFit.Token;
+using FlexFit.Infrastructure.Data;
+using FlexFit.Domain.Models;
+using FlexFit.Domain.MongoModels.Models;
+using FlexFit.Domain.MongoModels.Repositories;
+using FlexFit.Infrastructure.Token;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using FlexFit.Application.DTOs;
@@ -30,36 +30,21 @@ namespace FlexFit.Application.Handlers
 
             if (user == null)
             {
-               
-                if (request.LoginDto.IsGoogle)
-                {
-                    user = new Member
-                    {
-                        Email = request.LoginDto.Email,
-                        Password = null,
-                        Role = Role.Member
-                    };
-                    _context.Users.Add(user);
-                    await _context.SaveChangesAsync();
-                }
-                else
-                {
-                    return null; 
-                }
+                return null;
             }
 
-           
+
             if (!request.LoginDto.IsGoogle)
             {
                 if (user.Password == null || !BCrypt.Net.BCrypt.Verify(request.LoginDto.Password, user.Password))
-                    return null; 
+                    return null;
             }
 
             if (user is Member member)
             {
                 var unactivatedCard = await _context.SubscriptionCards
                     .FirstOrDefaultAsync(c => c.MemberId == member.Id && c.ValidFrom == null, cancellationToken);
-                
+
                 if (unactivatedCard != null)
                 {
                     unactivatedCard.ValidFrom = DateTime.UtcNow;
@@ -68,7 +53,7 @@ namespace FlexFit.Application.Handlers
                 }
             }
 
-            
+
             var tokenResponse = _tokenService.CreateToken(user);
             user.RefreshToken = tokenResponse.RefreshToken;
             user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);

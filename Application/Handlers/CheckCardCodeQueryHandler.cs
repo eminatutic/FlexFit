@@ -1,5 +1,5 @@
-using FlexFit.Application.Queries;
-using FlexFit.UnitOfWorkLayer;
+﻿using FlexFit.Application.Queries;
+using FlexFit.Infrastructure.UnitOfWorkLayer;
 using MediatR;
 
 namespace FlexFit.Application.Handlers
