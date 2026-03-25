@@ -141,6 +141,15 @@ namespace FlexFit
 
             var app = builder.Build();
 
+            var forwardingOptions = new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor |
+                       Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
+            };
+            forwardingOptions.KnownNetworks.Clear(); // Railway koristi dinami?ke IP adrese
+            forwardingOptions.KnownProxies.Clear();
+            app.UseForwardedHeaders(forwardingOptions);
+
             // --- AUTOMATSKE MIGRACIJE PRI STARTU ---
             using (var scope = app.Services.CreateScope())
             {
