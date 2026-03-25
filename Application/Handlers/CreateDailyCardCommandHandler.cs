@@ -1,4 +1,4 @@
-﻿using FlexFit.Application.Commands;
+using FlexFit.Application.Commands;
 using FlexFit.Domain.Models;
 using FlexFit.Infrastructure.UnitOfWorkLayer;
 using MediatR;
@@ -36,6 +36,16 @@ namespace FlexFit.Application.Handlers
             }
 
             await _uow.MembershipCards.AddAsync(card);
+            
+            try 
+            {
+                await _uow.MemberGraph.CreateCardAsync(card.CardNumber, "daily card");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[CreateDailyCardHandler] WARNING: Neo4j sync failed: {ex.Message}");
+            }
+
             await _uow.SaveAsync();
             return true;
         }

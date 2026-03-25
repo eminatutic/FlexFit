@@ -80,6 +80,7 @@ namespace FlexFit.Application.Handlers
                         if (dto.EmployeeId > 0)
                         {
                             await _graphRepo.RecordEmployeeCheckAsync(dto.EmployeeId.ToString(), dto.MemberId.ToString());
+                            await _graphRepo.RecordCardCheckAsync(dto.EmployeeId.ToString(), dto.CardNumber);
                         }
 
                         // Sync card ownership in graph

@@ -30,21 +30,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAJoAAAAAAAAAAAAIwLUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T10:24:24.426Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
@@ -67,6 +54,19 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAQwJYAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T10:24:24.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\Dockerfile",
@@ -75,8 +75,7 @@
               "RelativeToolTip": "Dockerfile",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-03-25T10:11:22.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-25T10:11:22.83Z"
             },
             {
               "$type": "Document",
@@ -88,8 +87,7 @@
               "RelativeToolTip": "Infrastructure\\Repositories\\ResourceRepository.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAmwBsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T09:14:58.911Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-25T09:14:58.911Z"
             },
             {
               "$type": "Document",
@@ -99,10 +97,9 @@
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\emina\\Desktop\\flexf\\flex\\FlexFit\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB0AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-24T15:01:56.263Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T15:01:56.263Z"
             },
             {
               "$type": "Document",

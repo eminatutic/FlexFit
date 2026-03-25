@@ -114,6 +114,32 @@ namespace FlexFit.Infrastructure.Repositories
             });
         }
 
+        public async Task RecordCardCheckAsync(string employeeId, string cardId, string employeeName = null)
+        {
+            using var session = _context.GetSession();
+            await session.ExecuteWriteAsync(async tx =>
+            {
+                await tx.RunAsync(@"
+                    MERGE (e:Employee {id: $eId})
+                    ON CREATE SET e.name = $eName
+                    MERGE (c:Card {id: $cId})
+                    MERGE (e)-[:CHECKED_CARD]->(c)", 
+                    new { eId = employeeId, eName = employeeName, cId = cardId });
+            });
+        }
+
+        public async Task CreateCardAsync(string cardId, string cardName)
+        {
+            using var session = _context.GetSession();
+            await session.ExecuteWriteAsync(async tx =>
+            {
+                await tx.RunAsync(@"
+                    MERGE (c:Card {id: $cId})
+                    ON CREATE SET c.name = $cName", 
+                    new { cId = cardId, cName = cardName });
+            });
+        }
+
         public async Task AssignPenaltyToMemberAsync(string penaltyId, string memberId, string penaltyDescription = null)
         {
             using var session = _context.GetSession();

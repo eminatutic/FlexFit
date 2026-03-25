@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FlexFit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2724337e61b9fbc7e83354a80083f50a18b7df12")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7fe22eade236db9c67004a3432a2229d7c7fd8a6")]
 [assembly: System.Reflection.AssemblyProductAttribute("FlexFit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FlexFit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
