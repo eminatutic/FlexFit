@@ -1,4 +1,5 @@
 using FlexFit.Application.Commands;
+using FlexFit.Application.DTOs;
 using FlexFit.Infrastructure.UnitOfWorkLayer;
 using MediatR;
 
@@ -11,22 +12,22 @@ namespace FlexFit.Application.Handlers
 
         public async Task<bool> Handle(CancelPenaltyCommand request, CancellationToken cancellationToken)
         {
-            if (request.Type == "Card")
+            if (request.Dto.Type == "Card")
             {
                 var card = await _uow.PenaltyCards.GetByIdAsync(request.Id);
                 if (card == null || card.IsCanceled) return false;
                 
                 card.IsCanceled = true;
-                card.CancelReason = request.Reason;
+                card.CancelReason = request.Dto.Reason;
                 await _uow.PenaltyCards.UpdateAsync(card);
             }
-            else if (request.Type == "Point")
+            else if (request.Dto.Type == "Point")
             {
                 var point = await _uow.PenaltyPoints.GetByIdAsync(request.Id);
                 if (point == null || point.IsCanceled) return false;
 
                 point.IsCanceled = true;
-                point.CancelReason = request.Reason;
+                point.CancelReason = request.Dto.Reason;
                 await _uow.PenaltyPoints.UpdateAsync(point);
             }
             else

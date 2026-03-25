@@ -1,4 +1,5 @@
 using FlexFit.Application.Commands;
+using FlexFit.Application.DTOs;
 using FlexFit.Domain.Models;
 using FlexFit.Infrastructure.UnitOfWorkLayer;
 using FlexFit.Domain.MongoModels.Models;
@@ -19,8 +20,8 @@ namespace FlexFit.Application.Handlers
             {
                 var twelveHoursAgo = DateTime.UtcNow.AddHours(-12);
                 
-                var memberPenalties = await _uow.PenaltyLogs.GetByMemberIdAsync(request.MemberId);
-                var existingPenalty = memberPenalties.Any(p => p.FitnessObjectId == request.FitnessObjectId 
+                var memberPenalties = await _uow.PenaltyLogs.GetByMemberIdAsync(request.Dto.MemberId);
+                var existingPenalty = memberPenalties.Any(p => p.FitnessObjectId == request.Dto.FitnessObjectId 
                                                          && p.Date >= twelveHoursAgo);
 
                 if (existingPenalty)
@@ -30,19 +31,20 @@ namespace FlexFit.Application.Handlers
 
                 var penalty = new PenaltyLog
                 {
-                    MemberId = request.MemberId,
-                    FitnessObjectId = request.FitnessObjectId,
+                    MemberId = request.Dto.MemberId,
+                    FitnessObjectId = request.Dto.FitnessObjectId,
                     Date = DateTime.UtcNow,
-                    Price = (double?)request.Price,
-                    Reason = request.Reason,
+                    Price = (double?)request.Dto.Price,
+                    Reason = request.Dto.Reason,
                     Type = "DailyTicket" 
                 };
 
                 await _uow.PenaltyLogs.AddAsync(penalty);
                 
                 try {
-                    await _uow.MemberGraph.AssignPenaltyToMemberAsync(penalty.Id, request.MemberId.ToString(), request.Reason);
-                } catch (Exception ex) {
+                    await _uow.MemberGraph.AssignPenaltyToMemberAsync(penalty.Id, request.Dto.MemberId.ToString(), request.Dto.Reason);
+                }
+ catch (Exception ex) {
                     Console.WriteLine($"[CreatePenaltyCardHandler] Neo4j Sync Error: {ex.Message}");
                 }
 

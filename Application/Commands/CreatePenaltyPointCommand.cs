@@ -1,10 +1,11 @@
-﻿using MediatR;
+using FlexFit.Application.DTOs;
+using MediatR;
 
 namespace FlexFit.Application.Commands
 {
     public class CreatePenaltyPointCommand : IRequest<bool>
     {
-        public int MemberId { get; set; }
-        public string Description { get; set; }
+        public CreatePenaltyPointDto Dto { get; }
+        public CreatePenaltyPointCommand(CreatePenaltyPointDto dto) => Dto = dto;
     }
 }

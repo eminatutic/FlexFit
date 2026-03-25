@@ -1,4 +1,5 @@
 using FlexFit.Application.Commands;
+using FlexFit.Application.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using FlexFit.Infrastructure.UnitOfWorkLayer;
@@ -34,27 +35,25 @@ namespace FlexFit.Presentation.Controllers
         }
 
         [HttpPost("cards")]
-        public async Task<IActionResult> CreateCard([FromBody] CreatePenaltyCardCommand command)
+        public async Task<IActionResult> CreateCard([FromBody] CreatePenaltyCardDto dto)
         {
-            var success = await _mediator.Send(command);
+            var success = await _mediator.Send(new CreatePenaltyCardCommand(dto));
             if (!success) return BadRequest(new { message = "Clan je vec dobio kaznenu kartu u ovom objektu u poslednjih 12h." });
             return Ok(new { message = "Kaznena karta uspesno izdata." });
         }
 
         [HttpPost("points")]
-        public async Task<IActionResult> CreatePoint([FromBody] CreatePenaltyPointCommand command)
+        public async Task<IActionResult> CreatePoint([FromBody] CreatePenaltyPointDto dto)
         {
-            var success = await _mediator.Send(command);
+            var success = await _mediator.Send(new CreatePenaltyPointCommand(dto));
             if (!success) return BadRequest(new { message = "Greska pri izdavanju kaznenog poena." });
             return Ok(new { message = "Kazneni poen uspesno dodat." });
         }
 
-        public class CancelDto { public string Type { get; set; } public string Reason { get; set; } }
-
         [HttpPut("{id}/cancel")]
-        public async Task<IActionResult> Cancel(string id, [FromBody] CancelDto dto)
+        public async Task<IActionResult> Cancel(string id, [FromBody] CancelPenaltyDto dto)
         {
-            var success = await _mediator.Send(new CancelPenaltyCommand(id, dto.Type, dto.Reason));
+            var success = await _mediator.Send(new CancelPenaltyCommand(id, dto));
             if (!success) return NotFound(new { message = "Kazna nije pronaÄ‘ena ili je veÄ‡ stornirana." });
             return Ok(new { message = "Uspesno stornirano uz napomenu." });
         }

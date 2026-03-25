@@ -1,13 +1,12 @@
-﻿using FlexFit.Domain.Models;
+using FlexFit.Application.DTOs;
+using FlexFit.Domain.Models;
 using MediatR;
 
 namespace FlexFit.Application.Commands
 {
     public class CreatePenaltyCardCommand : IRequest<bool>
     {
-        public int MemberId { get; set; }
-        public int FitnessObjectId { get; set; }
-        public decimal Price { get; set; }
-        public string Reason { get; set; }
+        public CreatePenaltyCardDto Dto { get; }
+        public CreatePenaltyCardCommand(CreatePenaltyCardDto dto) => Dto = dto;
     }
 }

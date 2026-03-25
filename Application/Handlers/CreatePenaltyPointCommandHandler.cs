@@ -1,4 +1,5 @@
 using FlexFit.Application.Commands;
+using FlexFit.Application.DTOs;
 using FlexFit.Domain.Models;
 using FlexFit.Infrastructure.UnitOfWorkLayer;
 using FlexFit.Domain.MongoModels.Models;
@@ -21,16 +22,16 @@ namespace FlexFit.Application.Handlers
             {
                 var penalty = new PenaltyLog
                 {
-                    MemberId = request.MemberId,
+                    MemberId = request.Dto.MemberId,
                     Date = DateTime.UtcNow,
                     Type = "Point",
-                    Reason = request.Description
+                    Reason = request.Dto.Description
                 };
                 
                 await _uow.PenaltyLogs.AddAsync(penalty);
 
                 try {
-                    await _uow.MemberGraph.AssignPenaltyToMemberAsync(penalty.Id, request.MemberId.ToString(), request.Description);
+                    await _uow.MemberGraph.AssignPenaltyToMemberAsync(penalty.Id, request.Dto.MemberId.ToString(), request.Dto.Description);
                 } catch (Exception ex) {
                     Console.WriteLine($"[CreatePenaltyPointHandler] Neo4j Sync Error: {ex.Message}");
                 }
