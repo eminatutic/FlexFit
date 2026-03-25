@@ -56,7 +56,7 @@ namespace FlexFit.Infrastructure.Repositories
             await _context.SaveChangesAsync();
 
             try {
-                await _graphRepo.LinkResourceToGymAsync(resource.Id, resource.FitnessObjectId, resource.Type.ToString(), "Gym #" + resource.FitnessObjectId);
+                await _graphRepo.LinkResourceToFitnessObjectAsync(resource.Id, resource.FitnessObjectId, resource.Type.ToString(), "FitnessObject #" + resource.FitnessObjectId);
             } catch (Exception ex) {
                 Console.WriteLine($"[ResourceRepository] Neo4j Sync Error: {ex.Message}");
             }

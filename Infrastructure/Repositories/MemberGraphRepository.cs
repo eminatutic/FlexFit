@@ -68,7 +68,7 @@ namespace FlexFit.Infrastructure.Repositories
             });
         }
 
-        public async Task AssignCardToMemberAsync(string memberId, string cardId, string cardName = null)
+        public async Task AssignCardToMemberAsync(string memberId, string cardId, string cardName = null, bool isActive = false)
         {
             using var session = _context.GetSession();
             await session.ExecuteWriteAsync(async tx =>
@@ -76,9 +76,10 @@ namespace FlexFit.Infrastructure.Repositories
                 await tx.RunAsync(@"
                     MERGE (m:Member {id: $mId})
                     MERGE (c:Card {id: $cId})
-                    ON CREATE SET c.name = $cName
+                    ON CREATE SET c.name = $cName, c.memberId = $mId, c.isActive = $isActive
+                    ON MATCH SET c.memberId = $mId, c.isActive = $isActive
                     MERGE (m)-[:HAS_CARD]->(c)", 
-                    new { mId = memberId, cId = cardId, cName = cardName });
+                    new { mId = memberId, cId = cardId, cName = cardName, isActive = isActive });
             });
         }
 
@@ -127,7 +128,7 @@ namespace FlexFit.Infrastructure.Repositories
             });
         }
 
-        public async Task LinkResourceToGymAsync(int resourceId, int gymId, string resourceName = null, string gymName = null)
+        public async Task LinkResourceToFitnessObjectAsync(int resourceId, int fitnessObjectId, string resourceName = null, string fitnessObjectName = null)
         {
             using var session = _context.GetSession();
             await session.ExecuteWriteAsync(async tx =>
@@ -135,10 +136,10 @@ namespace FlexFit.Infrastructure.Repositories
                 await tx.RunAsync(@"
                     MERGE (r:Resource {id: $rId})
                     ON CREATE SET r.name = $rName
-                    MERGE (g:Gym {id: $gId})
-                    ON CREATE SET g.name = $gName
-                    MERGE (r)-[:BELONGS_TO]->(g)", 
-                    new { rId = resourceId.ToString(), rName = resourceName, gId = gymId.ToString(), gName = gymName });
+                    MERGE (o:FitnessObject {id: $oId})
+                    ON CREATE SET o.name = $oName
+                    MERGE (r)-[:BELONGS_TO]->(o)", 
+                    new { rId = resourceId.ToString(), rName = resourceName, oId = fitnessObjectId.ToString(), oName = fitnessObjectName });
             });
         }
 
@@ -149,9 +150,9 @@ namespace FlexFit.Infrastructure.Repositories
             {
                 await tx.RunAsync(@"
                     MERGE (c:Card {id: $cId})
-                    MERGE (g:Gym {id: $gId})
-                    MERGE (c)-[:VALID_IN]->(g)", 
-                    new { cId = cardId, gId = gymId.ToString() });
+                    MERGE (o:FitnessObject {id: $oId})
+                    MERGE (c)-[:VALID_IN]->(o)", 
+                    new { cId = cardId, oId = gymId.ToString() });
             });
         }
     }

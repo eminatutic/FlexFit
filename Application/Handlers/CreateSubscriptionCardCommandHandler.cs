@@ -29,7 +29,7 @@ namespace FlexFit.Application.Handlers
             await _uow.MembershipCards.AddAsync(card);
             
             try {
-                await _uow.MemberGraph.AssignCardToMemberAsync(card.MemberId.ToString(), card.CardNumber, "Subscription");
+                await _uow.MemberGraph.AssignCardToMemberAsync(card.MemberId.ToString(), card.CardNumber, "Subscription", true);
             } catch (Exception ex) {
                 Console.WriteLine($"[CreateSubscriptionCardHandler] Neo4j Sync Error: {ex.Message}");
             }

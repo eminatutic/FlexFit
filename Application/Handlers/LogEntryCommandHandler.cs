@@ -81,6 +81,10 @@ namespace FlexFit.Application.Handlers
                         {
                             await _graphRepo.RecordEmployeeCheckAsync(dto.EmployeeId.ToString(), dto.MemberId.ToString());
                         }
+
+                        // Sync card ownership in graph
+                        bool isActive = dto.CardStatus == "Active" || dto.CardStatus == "Aktivna";
+                        await _graphRepo.AssignCardToMemberAsync(dto.MemberId.ToString(), dto.CardNumber, dto.CardType, isActive);
                     }
                 }
                 catch (Exception ex)
