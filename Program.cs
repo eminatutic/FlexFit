@@ -174,6 +174,17 @@ namespace FlexFit
             // Custom throttling middleware
             app.UseMiddleware<SmartThrottlingMiddleware>();
 
+            // --- POCETNA PORUKA (Health Check) ---
+            app.MapGet("/", () => Results.Json(new
+            {
+                Message = "FlexFit API uspešno radi!",
+                Status = "Online",
+                Database = "Connected (Postgres & MongoDB)",
+                Environment = app.Environment.EnvironmentName,
+                Time = DateTime.UtcNow
+            }));
+            // -------------------------------------
+
             app.MapControllers();
 
             app.Run();
